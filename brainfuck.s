@@ -48,6 +48,11 @@ brainfuck:
 	pushq 	%rbp
 	movq 	%rsp, %rbp
 
+	subq 	$8, %rsp
+	push 	%rbx
+	push 	%r12
+	push 	%r13
+
 	movq	$mem_arr, %r13
 	movq 	%rdi, %rbx
 
@@ -59,6 +64,10 @@ brainfuck:
 		jmp 	*jump_table(, %rax, 8)
 
 	eof:
+	pop 	%r13
+	pop 	%r12
+	pop		%rbx
+
 	movq 	$0, %rax
 	movq 	%rbp, %rsp
 	popq 	%rbp
@@ -142,7 +151,7 @@ exit_loop:
 	jmp 	read_char_and_dispatch
 
 	jump_to_enter:
-		movq 	(%rsp), %r12
+		popq 	%r12
 		jmp 	enter_loop
 
 	
