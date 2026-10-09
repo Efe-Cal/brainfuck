@@ -8,9 +8,9 @@ jump_table:
 	.endr
 	
 	.quad handle_inc_cell		# +
-    .quad handle_print         	# ,
+    .quad handle_read         	# ,
     .quad handle_dec_cell      	# -
-    .quad handle_read          	# .
+    .quad handle_print         	# .
 
     .rept 13                   
     	.quad ignore_char
