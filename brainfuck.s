@@ -143,7 +143,7 @@ exit_loop:
 
 	jump_to_enter:
 		movq 	(%rsp), %r12
-		jmp 	read_char_and_dispatch
+		jmp 	enter_loop
 
 	
 		
